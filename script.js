@@ -7,11 +7,180 @@
 
 const WHATSAPP_NUMBER = "525610791508";
 
+/*
+HORARIOS DEL MENÚ
+-----------------
+Estos horarios son PROVISIONALES porque todavía no me diste los horarios reales.
+Cámbialos aquí y no tendrás que tocar ninguna otra parte del código.
+
+Desayunos: 08:00 a 13:00
+Comida:    13:00 a 23:00
+*/
+const MENU_SCHEDULE = {
+    desayuno: {
+        start: "08:00",
+        end: "13:00",
+        label: "Desayunos"
+    },
+    comida: {
+        start: "13:00",
+        end: "23:00",
+        label: "Comida"
+    }
+};
+
 
 /* BASE DE DATOS DEL MENÚ */
 
 const products = [
 
+
+    /* DESAYUNOS */
+
+    {
+        id: 16,
+        name: "Chilaquiles Garage",
+        category: "desayunos",
+        categoryLabel: "Desayunos",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 105,
+        badge: "Favorito",
+        // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE CHILAQUILES
+        image: "assets/img/hero2.webp",
+        description: "Totopos crujientes con salsa roja o verde, crema, queso y cebolla.",
+        options: [
+            "Salsa roja",
+            "Salsa verde",
+            "Sin cebolla",
+            "Sin crema"
+        ],
+        extras: [
+            { name: "Huevo extra", price: 20 },
+            { name: "Pollo", price: 30 },
+            { name: "Aguacate", price: 25 }
+        ]
+    },
+
+    {
+        id: 17,
+        name: "Molletes Rock",
+        category: "desayunos",
+        categoryLabel: "Desayunos",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 85,
+        badge: "Clásicos",
+        // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE MOLLETES
+        image: "assets/img/hero2.webp",
+        description: "Pan dorado con frijoles, queso gratinado y pico de gallo.",
+        options: [
+            "Sin pico de gallo",
+            "Pico de gallo aparte",
+            "Sin frijoles"
+        ],
+        extras: [
+            { name: "Chorizo", price: 25 },
+            { name: "Tocino", price: 25 },
+            { name: "Aguacate", price: 25 }
+        ]
+    },
+
+    {
+        id: 18,
+        name: "Huevos Motor",
+        category: "desayunos",
+        categoryLabel: "Desayunos",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 95,
+        badge: "Al gusto",
+        // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE HUEVOS
+        image: "assets/img/hero2.webp",
+        description: "Dos huevos al gusto acompañados de frijoles y pan tostado.",
+        options: [
+            "Revueltos",
+            "Estrellados",
+            "Sin frijoles",
+            "Pan aparte"
+        ],
+        extras: [
+            { name: "Jamón", price: 20 },
+            { name: "Tocino", price: 25 },
+            { name: "Chorizo", price: 25 }
+        ]
+    },
+
+    {
+        id: 19,
+        name: "Hotcakes Amplificador",
+        category: "desayunos",
+        categoryLabel: "Desayunos",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 99,
+        badge: "Dulces",
+        // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE HOTCAKES
+        image: "assets/img/hero2.webp",
+        description: "Tres hotcakes esponjosos con mantequilla, miel y fruta de temporada.",
+        options: [
+            "Sin mantequilla",
+            "Miel aparte",
+            "Sin fruta"
+        ],
+        extras: [
+            { name: "Nutella", price: 25 },
+            { name: "Plátano", price: 18 },
+            { name: "Tocino", price: 25 }
+        ]
+    },
+
+    {
+        id: 20,
+        name: "Croissant Garage",
+        category: "desayunos",
+        categoryLabel: "Desayunos",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 92,
+        badge: "Nuevo",
+        // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE CROISSANT
+        image: "assets/img/hero2.webp",
+        description: "Croissant caliente con jamón, queso, huevo y aderezo de la casa.",
+        options: [
+            "Sin jamón",
+            "Sin huevo",
+            "Sin aderezo",
+            "Aderezo aparte"
+        ],
+        extras: [
+            { name: "Tocino", price: 25 },
+            { name: "Extra queso", price: 20 },
+            { name: "Aguacate", price: 25 }
+        ]
+    },
+
+    {
+        id: 21,
+        name: "Café del Taller",
+        category: "desayunos",
+        categoryLabel: "Desayunos",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 45,
+        badge: "Caliente",
+        // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE CAFÉ
+        image: "assets/img/hero2.webp",
+        description: "Café americano recién preparado para arrancar el motor.",
+        options: [
+            "Sin azúcar",
+            "Azúcar aparte"
+        ],
+        extras: [
+            { name: "Leche", price: 10 },
+            { name: "Shot extra", price: 18 }
+        ]
+    },
     /* HAMBURGUESAS */
 
     {
@@ -19,6 +188,8 @@ const products = [
         name: "Hamburguesa Rocker",
         category: "hamburguesas",
         categoryLabel: "Hamburguesas",
+        mealPeriod: "comida",
+        available: true,
         price: 149,
         badge: "Más vendida",
 
@@ -56,6 +227,8 @@ const products = [
         name: "Hamburguesa Inferno",
         category: "hamburguesas",
         categoryLabel: "Hamburguesas",
+        mealPeriod: "comida",
+        available: true,
         price: 159,
         badge: "Picante",
 
@@ -93,6 +266,8 @@ const products = [
         name: "Hamburguesa Garage",
         category: "hamburguesas",
         categoryLabel: "Hamburguesas",
+        mealPeriod: "comida",
+        available: true,
         price: 179,
         badge: "Doble carne",
 
@@ -133,6 +308,8 @@ const products = [
         name: "Alitas BBQ",
         category: "alitas",
         categoryLabel: "Alitas",
+        mealPeriod: "comida",
+        available: true,
         price: 139,
         badge: "Clásicas",
 
@@ -169,6 +346,8 @@ const products = [
         name: "Alitas Inferno",
         category: "alitas",
         categoryLabel: "Alitas",
+        mealPeriod: "comida",
+        available: true,
         price: 145,
         badge: "Muy picantes",
 
@@ -208,6 +387,8 @@ const products = [
         name: "Boneless BBQ",
         category: "boneless",
         categoryLabel: "Boneless",
+        mealPeriod: "comida",
+        available: true,
         price: 135,
         badge: "Favoritos",
 
@@ -244,6 +425,8 @@ const products = [
         name: "Boneless Buffalo",
         category: "boneless",
         categoryLabel: "Boneless",
+        mealPeriod: "comida",
+        available: true,
         price: 139,
         badge: "Intensos",
 
@@ -283,6 +466,8 @@ const products = [
         name: "Papas Clásicas",
         category: "papas",
         categoryLabel: "Papas",
+        mealPeriod: "comida",
+        available: true,
         price: 69,
         badge: "Crujientes",
 
@@ -319,6 +504,8 @@ const products = [
         name: "Papas Cargadas",
         category: "papas",
         categoryLabel: "Papas",
+        mealPeriod: "comida",
+        available: true,
         price: 109,
         badge: "Para compartir",
 
@@ -359,6 +546,8 @@ const products = [
         name: "Malteada Chocolate",
         category: "malteadas",
         categoryLabel: "Malteadas",
+        mealPeriod: "comida",
+        available: true,
         price: 89,
         badge: "Cremosa",
 
@@ -395,6 +584,8 @@ const products = [
         name: "Malteada Vainilla",
         category: "malteadas",
         categoryLabel: "Malteadas",
+        mealPeriod: "comida",
+        available: true,
         price: 85,
         badge: "Clásica",
 
@@ -434,6 +625,8 @@ const products = [
         name: "Cerveza",
         category: "bebidas",
         categoryLabel: "Cervezas / Bebidas",
+        mealPeriod: "comida",
+        available: true,
         price: 55,
         badge: "Fría",
 
@@ -456,6 +649,8 @@ const products = [
         name: "Limonada Mineral",
         category: "bebidas",
         categoryLabel: "Cervezas / Bebidas",
+        mealPeriod: "comida",
+        available: true,
         price: 59,
         badge: "Refrescante",
 
@@ -491,6 +686,8 @@ const products = [
         name: "Brownie Rock",
         category: "postres",
         categoryLabel: "Postres",
+        mealPeriod: "comida",
+        available: true,
         price: 79,
         badge: "Chocolate",
 
@@ -523,6 +720,8 @@ const products = [
         name: "Cheesecake",
         category: "postres",
         categoryLabel: "Postres",
+        mealPeriod: "comida",
+        available: true,
         price: 85,
         badge: "Especialidad",
 
@@ -629,6 +828,57 @@ const mobileMenuButton =
 const navigation =
     document.querySelector("#navigation");
 
+const menuFilters =
+    document.querySelector("#menuFilters");
+
+const mealPeriodButtons =
+    document.querySelectorAll("[data-meal-period]");
+
+const menuScheduleStatus =
+    document.querySelector("#menuScheduleStatus");
+
+const floatingCartButton =
+    document.querySelector("#floatingCartButton");
+
+const floatingCartCount =
+    document.querySelector("#floatingCartCount");
+
+const floatingCartTotal =
+    document.querySelector("#floatingCartTotal");
+
+const tableField =
+    document.querySelector("#tableField");
+
+const customerNameField =
+    document.querySelector("#customerNameField");
+
+const customerName =
+    document.querySelector("#customerName");
+
+const addressField =
+    document.querySelector("#addressField");
+
+const deliveryAddress =
+    document.querySelector("#deliveryAddress");
+
+const referencesField =
+    document.querySelector("#referencesField");
+
+const deliveryReferences =
+    document.querySelector("#deliveryReferences");
+
+const orderNotes =
+    document.querySelector("#orderNotes");
+
+const cashPaymentOption =
+    document.querySelector("#cashPaymentOption");
+
+const deliveryPaymentNotice =
+    document.querySelector("#deliveryPaymentNotice");
+
+const bankDetails =
+    document.querySelector("#bankDetails");
+
 
 /* ESTADO DE LA APLICACIÓN */
 
@@ -637,6 +887,14 @@ let currentProduct = null;
 let modalQuantity = 1;
 
 let cart = loadCart();
+
+let currentCategory = "todos";
+
+let currentMealPeriod =
+    getCurrentServicePeriod() || "comida";
+
+let lastDetectedServicePeriod =
+    getCurrentServicePeriod();
 
 
 /* UTILIDADES */
@@ -701,13 +959,170 @@ function showToast(message) {
 }
 
 
+/* HORARIOS Y DISPONIBILIDAD DEL MENÚ */
+
+function timeToMinutes(time) {
+    const [hours, minutes] =
+        time.split(":").map(Number);
+
+    return hours * 60 + minutes;
+}
+
+
+function isTimeInsideRange(currentMinutes, start, end) {
+    const startMinutes = timeToMinutes(start);
+    const endMinutes = timeToMinutes(end);
+
+    if (startMinutes <= endMinutes) {
+        return (
+            currentMinutes >= startMinutes &&
+            currentMinutes < endMinutes
+        );
+    }
+
+    return (
+        currentMinutes >= startMinutes ||
+        currentMinutes < endMinutes
+    );
+}
+
+
+function getCurrentServicePeriod() {
+    const now = new Date();
+
+    const currentMinutes =
+        now.getHours() * 60 +
+        now.getMinutes();
+
+    if (
+        isTimeInsideRange(
+            currentMinutes,
+            MENU_SCHEDULE.desayuno.start,
+            MENU_SCHEDULE.desayuno.end
+        )
+    ) {
+        return "desayuno";
+    }
+
+    if (
+        isTimeInsideRange(
+            currentMinutes,
+            MENU_SCHEDULE.comida.start,
+            MENU_SCHEDULE.comida.end
+        )
+    ) {
+        return "comida";
+    }
+
+    return null;
+}
+
+
+function getPeriodAvailabilityText(period) {
+    const schedule =
+        MENU_SCHEDULE[period];
+
+    return `${schedule.start}–${schedule.end}`;
+}
+
+
+function isProductOrderable(product) {
+    return (
+        product.available !== false &&
+        getCurrentServicePeriod() ===
+            product.mealPeriod
+    );
+}
+
+
+function getProductAvailabilityLabel(product) {
+    if (product.available === false) {
+        return "Agotado";
+    }
+
+    const currentPeriod =
+        getCurrentServicePeriod();
+
+    if (!currentPeriod) {
+        return "Fuera de horario";
+    }
+
+    if (
+        currentPeriod !==
+        product.mealPeriod
+    ) {
+        return `Disponible ${getPeriodAvailabilityText(product.mealPeriod)}`;
+    }
+
+    return "";
+}
+
+
+function updateScheduleInterface() {
+    const activePeriod =
+        getCurrentServicePeriod();
+
+    mealPeriodButtons.forEach(
+        (button) => {
+            const period =
+                button.dataset.mealPeriod;
+
+            button.classList.toggle(
+                "active",
+                period === currentMealPeriod
+            );
+
+            button.classList.toggle(
+                "is-orderable",
+                period === activePeriod
+            );
+        }
+    );
+
+    if (!activePeriod) {
+        menuScheduleStatus.innerHTML = `
+            <strong>Pedidos cerrados por el momento.</strong>
+            Desayunos ${getPeriodAvailabilityText("desayuno")} ·
+            Comida ${getPeriodAvailabilityText("comida")}.
+        `;
+    } else if (activePeriod === "desayuno") {
+        menuScheduleStatus.innerHTML = `
+            <strong>Turno de desayunos activo.</strong>
+            La comida estará disponible de
+            ${getPeriodAvailabilityText("comida")}.
+        `;
+    } else {
+        menuScheduleStatus.innerHTML = `
+            <strong>Turno de comida activo.</strong>
+            Los desayunos se sirven de
+            ${getPeriodAvailabilityText("desayuno")}.
+        `;
+    }
+
+    menuFilters.hidden =
+        currentMealPeriod === "desayuno";
+}
+
+
 /* RENDER DEL MENÚ */
 
 function createProductCard(product, index) {
     const card = document.createElement("article");
 
+    const orderable =
+        isProductOrderable(product);
+
+    const unavailableLabel =
+        getProductAvailabilityLabel(product);
+
     card.className =
         "product-card is-appearing";
+
+    if (!orderable) {
+        card.classList.add(
+            "product-card--unavailable"
+        );
+    }
 
     card.dataset.category =
         product.category;
@@ -718,7 +1133,6 @@ function createProductCard(product, index) {
     card.innerHTML = `
         <div class="product-card__image-wrapper">
 
-            <!-- REEMPLAZA ESTA RUTA POR TU IMAGEN LOCAL EN EL ARREGLO products DE script.js -->
             <img
                 src="${product.image}"
                 alt="${product.name}"
@@ -728,8 +1142,18 @@ function createProductCard(product, index) {
             >
 
             <span class="product-card__badge">
-                ${product.badge}
+                ${orderable ? product.badge : unavailableLabel}
             </span>
+
+            ${
+                !orderable
+                    ? `
+                        <div class="product-card__unavailable-overlay">
+                            <strong>${unavailableLabel}</strong>
+                        </div>
+                    `
+                    : ""
+            }
 
         </div>
 
@@ -757,11 +1181,12 @@ function createProductCard(product, index) {
                 type="button"
                 class="product-card__button"
                 data-product-id="${product.id}"
+                ${orderable ? "" : "disabled"}
             >
-                Personalizar
+                ${orderable ? "Personalizar" : unavailableLabel}
 
                 <span aria-hidden="true">
-                    ↗
+                    ${orderable ? "↗" : "×"}
                 </span>
             </button>
 
@@ -772,21 +1197,54 @@ function createProductCard(product, index) {
 }
 
 
-function renderProducts(category = "todos") {
+function renderProducts(category = currentCategory) {
+    currentCategory = category;
+
     productsGrid.innerHTML = "";
+
+    const periodProducts =
+        products.filter(
+            (product) =>
+                product.mealPeriod ===
+                currentMealPeriod
+        );
 
     const filteredProducts =
         category === "todos"
-            ? products
-            : products.filter(
+            ? periodProducts
+            : periodProducts.filter(
                 (product) =>
-                    product.category === category
+                    product.category ===
+                    category
             );
+
+    if (!filteredProducts.length) {
+        productsGrid.innerHTML = `
+            <div class="menu-empty-state">
+                <span>⚙️</span>
+                <h3>
+                    ${
+                        "No hay productos disponibles"
+                    }
+                </h3>
+                <p>
+                    ${
+                        "Prueba con otro turno o categoría del menú."
+                    }
+                </p>
+            </div>
+        `;
+
+        return;
+    }
 
     filteredProducts.forEach(
         (product, index) => {
             productsGrid.append(
-                createProductCard(product, index)
+                createProductCard(
+                    product,
+                    index
+                )
             );
         }
     );
@@ -800,6 +1258,8 @@ filterButtons.forEach((button) => {
         const category =
             button.dataset.category;
 
+        currentCategory = category;
+
         filterButtons.forEach(
             (currentButton) => {
                 currentButton.classList.remove(
@@ -811,6 +1271,29 @@ filterButtons.forEach((button) => {
         button.classList.add("active");
 
         renderProducts(category);
+    });
+});
+
+
+mealPeriodButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        currentMealPeriod =
+            button.dataset.mealPeriod;
+
+        currentCategory = "todos";
+
+        filterButtons.forEach(
+            (currentButton) => {
+                currentButton.classList.toggle(
+                    "active",
+                    currentButton.dataset.category ===
+                        "todos"
+                );
+            }
+        );
+
+        updateScheduleInterface();
+        renderProducts();
     });
 });
 
@@ -848,6 +1331,13 @@ productsGrid.addEventListener(
 
 
 function openProductModal(product) {
+    if (!isProductOrderable(product)) {
+        showToast(
+            getProductAvailabilityLabel(product)
+        );
+        return;
+    }
+
     currentProduct = product;
     modalQuantity = 1;
 
@@ -1110,16 +1600,20 @@ productOptionsForm.addEventListener(
                 productNotes.value.trim()
         };
 
+        const addedProductName =
+            currentProduct.name;
+
         cart.push(cartItem);
 
         saveCart();
         renderCart();
         animateCartCount();
+        animateFloatingCart();
 
         closeProductModal();
 
         showToast(
-            `${currentProduct.name} agregado al carrito`
+            `${addedProductName} agregado al carrito`
         );
     }
 );
@@ -1148,6 +1642,19 @@ function renderCart() {
         totalQuantity;
 
     cartSubtotal.textContent =
+        formatCurrency(subtotal);
+
+    floatingCartButton.hidden =
+        cart.length === 0;
+
+    floatingCartCount.textContent =
+        `${totalQuantity} ${
+            totalQuantity === 1
+                ? "producto"
+                : "productos"
+        }`;
+
+    floatingCartTotal.textContent =
         formatCurrency(subtotal);
 
     sendWhatsAppButton.disabled =
@@ -1414,6 +1921,174 @@ cartOverlay.addEventListener(
 );
 
 
+floatingCartButton.addEventListener(
+    "click",
+    openCart
+);
+
+
+function animateFloatingCart() {
+    floatingCartButton.classList.remove(
+        "is-bumping"
+    );
+
+    void floatingCartButton.offsetWidth;
+
+    floatingCartButton.classList.add(
+        "is-bumping"
+    );
+}
+
+
+/* CHECKOUT: ENTREGA Y MÉTODO DE PAGO */
+
+function getSelectedFulfillment() {
+    return document.querySelector(
+        'input[name="fulfillmentType"]:checked'
+    )?.value || "local";
+}
+
+
+function getSelectedPaymentMethod() {
+    return document.querySelector(
+        'input[name="paymentMethod"]:checked'
+    )?.value || "";
+}
+
+
+function updateCheckoutFields() {
+    const fulfillment =
+        getSelectedFulfillment();
+
+    tableField.hidden =
+        fulfillment !== "local";
+
+    customerNameField.hidden =
+        fulfillment === "local";
+
+    addressField.hidden =
+        fulfillment !== "domicilio";
+
+    referencesField.hidden =
+        fulfillment !== "domicilio";
+
+    const cashInput =
+        document.querySelector(
+            'input[name="paymentMethod"][value="efectivo"]'
+        );
+
+    const transferInput =
+        document.querySelector(
+            'input[name="paymentMethod"][value="transferencia"]'
+        );
+
+    const isDelivery =
+        fulfillment === "domicilio";
+
+    cashInput.disabled =
+        isDelivery;
+
+    cashPaymentOption.classList.toggle(
+        "is-disabled",
+        isDelivery
+    );
+
+    deliveryPaymentNotice.hidden =
+        !isDelivery;
+
+    if (isDelivery) {
+        transferInput.checked = true;
+        cashInput.checked = false;
+    }
+
+    updateBankDetails();
+}
+
+
+function updateBankDetails() {
+    bankDetails.hidden =
+        getSelectedPaymentMethod() !==
+        "transferencia";
+}
+
+
+document
+    .querySelectorAll(
+        'input[name="fulfillmentType"]'
+    )
+    .forEach((input) => {
+        input.addEventListener(
+            "change",
+            updateCheckoutFields
+        );
+    });
+
+
+document
+    .querySelectorAll(
+        'input[name="paymentMethod"]'
+    )
+    .forEach((input) => {
+        input.addEventListener(
+            "change",
+            updateBankDetails
+        );
+    });
+
+
+function validateCheckout() {
+    const fulfillment =
+        getSelectedFulfillment();
+
+    if (fulfillment === "llevar") {
+        if (!customerName.value.trim()) {
+            showToast(
+                "Escribe el nombre del cliente"
+            );
+            customerName.focus();
+            return false;
+        }
+    }
+
+    if (fulfillment === "domicilio") {
+        if (!customerName.value.trim()) {
+            showToast(
+                "Escribe el nombre de quien recibe"
+            );
+            customerName.focus();
+            return false;
+        }
+
+        if (!deliveryAddress.value.trim()) {
+            showToast(
+                "Escribe la dirección de entrega"
+            );
+            deliveryAddress.focus();
+            return false;
+        }
+
+        if (
+            getSelectedPaymentMethod() !==
+            "transferencia"
+        ) {
+            showToast(
+                "A domicilio solo se acepta transferencia"
+            );
+            return false;
+        }
+    }
+
+    if (!getSelectedPaymentMethod()) {
+        showToast(
+            "Selecciona un método de pago"
+        );
+        return false;
+    }
+
+    return true;
+}
+
+
 /* WHATSAPP DEL PEDIDO */
 
 sendWhatsAppButton.addEventListener(
@@ -1423,14 +2098,17 @@ sendWhatsAppButton.addEventListener(
             return;
         }
 
+        if (!validateCheckout()) {
+            return;
+        }
+
         if (
             !WHATSAPP_NUMBER ||
             WHATSAPP_NUMBER === "TU_NUMERO"
         ) {
             window.alert(
-                "Debes reemplazar TU_NUMERO en script.js por el número real de WhatsApp."
+                "Debes configurar el número real de WhatsApp en script.js."
             );
-
             return;
         }
 
@@ -1451,33 +2129,69 @@ sendWhatsAppButton.addEventListener(
 
 
 function createWhatsAppMessage() {
+    const fulfillment =
+        getSelectedFulfillment();
+
+    const paymentMethod =
+        getSelectedPaymentMethod();
+
+    const fulfillmentLabels = {
+        local: "En local",
+        llevar: "Para llevar",
+        domicilio: "A domicilio"
+    };
+
+    const paymentLabels = {
+        efectivo: "Efectivo",
+        transferencia: "Transferencia"
+    };
+
     const lines = [
-        "¡Hola! Quisiera realizar el siguiente pedido:",
+        "🍔 NUEVO PEDIDO - GARAGE ROCK",
         ""
     ];
 
     cart.forEach((item) => {
-        const specifications =
-            buildItemSpecifications(item);
+        lines.push(
+            `${item.quantity}x ${item.name}`
+        );
 
-        let productLine =
-            `- ${item.quantity}x ${item.name}`;
+        lines.push(
+            `Precio base: ${formatCurrency(item.basePrice)}`
+        );
 
-        if (specifications) {
-            productLine +=
-                ` (${specifications})`;
+        if (item.options.length) {
+            lines.push("Modificaciones:");
+
+            item.options.forEach(
+                (option) => {
+                    lines.push(
+                        `• ${option}`
+                    );
+                }
+            );
         }
 
-        lines.push(productLine);
+        if (item.extras.length) {
+            lines.push("Extras:");
+
+            item.extras.forEach(
+                (extra) => {
+                    lines.push(
+                        `• ${extra.name} +${formatCurrency(extra.price)}`
+                    );
+                }
+            );
+        }
 
         if (item.notes) {
             lines.push(
-                `  Nota: ${item.notes}`
+                `Nota: ${item.notes}`
             );
         }
 
         lines.push(
-            `  Importe: ${formatCurrency(
+            `Subtotal: ${formatCurrency(
                 item.unitPrice *
                 item.quantity
             )}`
@@ -1495,15 +2209,60 @@ function createWhatsAppMessage() {
             0
         );
 
+    lines.push("------------------------");
     lines.push(
-        `Total: ${formatCurrency(total)}`
+        `TOTAL: ${formatCurrency(total)}`
     );
-
     lines.push("");
+    lines.push(
+        `Tipo de pedido: ${fulfillmentLabels[fulfillment]}`
+    );
+
+    if (fulfillment === "local") {
+        lines.push(
+            "Mesa: se asigna al llegar"
+        );
+    }
+
+    if (
+        fulfillment === "llevar" ||
+        fulfillment === "domicilio"
+    ) {
+        lines.push(
+            `Nombre: ${customerName.value.trim()}`
+        );
+    }
+
+    if (fulfillment === "domicilio") {
+        lines.push(
+            `Dirección: ${deliveryAddress.value.trim()}`
+        );
+
+        if (
+            deliveryReferences.value.trim()
+        ) {
+            lines.push(
+                `Referencias: ${deliveryReferences.value.trim()}`
+            );
+        }
+    }
 
     lines.push(
-        "¿Me pueden confirmar disponibilidad y tiempo de entrega?"
+        `Pago: ${paymentLabels[paymentMethod]}`
     );
+
+    if (orderNotes.value.trim()) {
+        lines.push(
+            `Notas generales: ${orderNotes.value.trim()}`
+        );
+    }
+
+    if (fulfillment === "domicilio") {
+        lines.push("");
+        lines.push(
+            "Costo de envío: por confirmar"
+        );
+    }
 
     return lines.join("\n");
 }
@@ -1595,6 +2354,41 @@ navigation
 
 /* INICIALIZACIÓN */
 
+updateScheduleInterface();
+
 renderProducts();
 
 renderCart();
+
+updateCheckoutFields();
+
+/*
+Revisa el horario cada minuto.
+Si cambia de turno mientras la página está abierta,
+las tarjetas se actualizan automáticamente.
+*/
+window.setInterval(
+    () => {
+        const detectedPeriod =
+            getCurrentServicePeriod();
+
+        if (
+            detectedPeriod !==
+            lastDetectedServicePeriod
+        ) {
+            lastDetectedServicePeriod =
+                detectedPeriod;
+
+            if (detectedPeriod) {
+                currentMealPeriod =
+                    detectedPeriod;
+                currentCategory =
+                    "todos";
+            }
+
+            updateScheduleInterface();
+            renderProducts();
+        }
+    },
+    60000
+);

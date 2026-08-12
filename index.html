@@ -211,6 +211,31 @@
                 </header>
 
 
+                <!-- CAMBIO DE TURNO DEL MENÚ -->
+                <div class="meal-switcher" id="mealSwitcher" aria-label="Turno del menú">
+
+                    <button
+                        type="button"
+                        class="meal-switcher__button"
+                        data-meal-period="desayuno"
+                    >
+                        <span>☀️</span>
+                        Desayunos
+                    </button>
+
+                    <button
+                        type="button"
+                        class="meal-switcher__button"
+                        data-meal-period="comida"
+                    >
+                        <span>🍔</span>
+                        Comida
+                    </button>
+
+                </div>
+
+                <div class="schedule-status" id="menuScheduleStatus" aria-live="polite"></div>
+
                 <div
                     class="menu-filters"
                     id="menuFilters"
@@ -708,17 +733,123 @@
         <footer class="cart-summary">
 
             <div class="cart-summary__row">
+                <span>Total</span>
+                <strong id="cartSubtotal">$0.00</strong>
+            </div>
 
-                <span>Subtotal</span>
+            <!-- TIPO DE ENTREGA -->
+            <fieldset class="checkout-block">
+                <legend>¿Cómo quieres recibir tu pedido?</legend>
 
-                <strong id="cartSubtotal">
-                    $0.00
-                </strong>
+                <div class="fulfillment-options">
+
+                    <label class="fulfillment-option">
+                        <input type="radio" name="fulfillmentType" value="local" checked>
+                        <span class="fulfillment-option__icon">🍽️</span>
+                        <strong>En local</strong>
+                    </label>
+
+                    <label class="fulfillment-option">
+                        <input type="radio" name="fulfillmentType" value="llevar">
+                        <span class="fulfillment-option__icon">🛍️</span>
+                        <strong>Para llevar</strong>
+                    </label>
+
+                    <label class="fulfillment-option">
+                        <input type="radio" name="fulfillmentType" value="domicilio">
+                        <span class="fulfillment-option__icon">🏠</span>
+                        <strong>Domicilio</strong>
+                    </label>
+
+                </div>
+            </fieldset>
+
+            <!-- CAMPOS DINÁMICOS -->
+            <div class="checkout-fields">
+
+                <div class="checkout-field local-service-note" id="tableField">
+                    <span>Servicio en local</span>
+                    <p>La mesa se asignará al llegar. Solo confirma tu pedido y muéstralo al personal.</p>
+                </div>
+
+                <label class="checkout-field" id="customerNameField" hidden>
+                    <span>Nombre del cliente</span>
+                    <input
+                        type="text"
+                        id="customerName"
+                        maxlength="70"
+                        placeholder="Ej. Juan Pérez"
+                        autocomplete="name"
+                    >
+                </label>
+
+                <label class="checkout-field" id="addressField" hidden>
+                    <span>Dirección de entrega</span>
+                    <textarea
+                        id="deliveryAddress"
+                        rows="3"
+                        maxlength="220"
+                        placeholder="Calle, número, colonia, alcaldía..."
+                        autocomplete="street-address"
+                    ></textarea>
+                </label>
+
+                <label class="checkout-field" id="referencesField" hidden>
+                    <span>Referencias</span>
+                    <textarea
+                        id="deliveryReferences"
+                        rows="2"
+                        maxlength="160"
+                        placeholder="Ej. Puerta negra, tocar el timbre..."
+                    ></textarea>
+                </label>
+
+                <label class="checkout-field">
+                    <span>Notas generales del pedido <small>(opcional)</small></span>
+                    <textarea
+                        id="orderNotes"
+                        rows="2"
+                        maxlength="180"
+                        placeholder="Ej. Todo bien cocido, salsas aparte..."
+                    ></textarea>
+                </label>
 
             </div>
 
+            <!-- MÉTODO DE PAGO -->
+            <fieldset class="checkout-block payment-block">
+
+                <legend>Método de pago</legend>
+
+                <div class="payment-options">
+
+                    <label class="payment-option" id="cashPaymentOption">
+                        <input type="radio" name="paymentMethod" value="efectivo" checked>
+                        <span>💵</span>
+                        <strong>Efectivo</strong>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="transferencia">
+                        <span>⇄</span>
+                        <strong>Transferencia</strong>
+                    </label>
+
+                </div>
+
+                <p class="delivery-payment-notice" id="deliveryPaymentNotice" hidden>
+                    Los pedidos a domicilio se pagan únicamente por transferencia.
+                </p>
+
+                <div class="bank-details" id="bankDetails" hidden>
+                    <strong>Datos para transferencia</strong>
+                    <p>000000000000000000000000.</p>
+                </div>
+
+            </fieldset>
+
             <p class="cart-summary__notice">
-                El costo de envío se confirmará por WhatsApp.
+                En pedidos a domicilio, el costo de envío se confirma por WhatsApp.
             </p>
 
             <button
@@ -734,6 +865,26 @@
         </footer>
 
     </aside>
+
+    <!-- CARRITO FLOTANTE: APARECE CUANDO HAY PRODUCTOS -->
+    <button
+        type="button"
+        class="floating-cart"
+        id="floatingCartButton"
+        aria-label="Abrir carrito"
+        hidden
+    >
+        <span class="floating-cart__icon">🛒</span>
+
+        <span class="floating-cart__content">
+            <strong id="floatingCartCount">0 productos</strong>
+            <small id="floatingCartTotal">$0.00</small>
+        </span>
+
+        <span class="floating-cart__action">
+            Ver pedido →
+        </span>
+    </button>
 
 
     <!--NOTIFICACIÓN-->
