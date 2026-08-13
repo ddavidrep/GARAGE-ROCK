@@ -240,6 +240,25 @@ const products = [
         // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE CHILAQUILES
         image: "assets/img/hero2.webp",
         description: "Totopos crujientes con salsa roja o verde, crema, queso y cebolla.",
+
+        ingredients: [
+            { name: "Totopos", default: true },
+            { name: "Salsa", default: true },
+            { name: "Crema", default: true },
+            { name: "Queso", default: true },
+            { name: "Cebolla", default: true },
+            { name: "Frijoles", default: true }
+        ],
+
+        extras: [
+            { name: "Huevo extra", price: 20 },
+            { name: "Pollo", price: 30 },
+            { name: "Aguacate", price: 25 },
+            { name: "Extra queso", price: 20 },
+            { name: "Extra crema", price: 12 },
+            { name: "Refresco", price: 35 },
+            { name: "Café", price: 30 }
+        ],
         options: [
             "Salsa roja",
             "Salsa verde",
@@ -265,6 +284,23 @@ const products = [
         // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE MOLLETES
         image: "assets/img/hero2.webp",
         description: "Pan dorado con frijoles, queso gratinado y pico de gallo.",
+
+        ingredients: [
+            { name: "Pan", default: true },
+            { name: "Frijoles", default: true },
+            { name: "Queso gratinado", default: true },
+            { name: "Pico de gallo", default: true }
+        ],
+
+        extras: [
+            { name: "Chorizo", price: 25 },
+            { name: "Tocino", price: 25 },
+            { name: "Aguacate", price: 25 },
+            { name: "Extra queso", price: 20 },
+            { name: "Huevo", price: 20 },
+            { name: "Refresco", price: 35 },
+            { name: "Café", price: 30 }
+        ],
         options: [
             "Sin pico de gallo",
             "Pico de gallo aparte",
@@ -289,6 +325,23 @@ const products = [
         // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE HUEVOS
         image: "assets/img/hero2.webp",
         description: "Dos huevos al gusto acompañados de frijoles y pan tostado.",
+
+        ingredients: [
+            { name: "Huevos", default: true },
+            { name: "Frijoles", default: true },
+            { name: "Pan tostado", default: true },
+            { name: "Salsa", default: true }
+        ],
+
+        extras: [
+            { name: "Jamón", price: 20 },
+            { name: "Tocino", price: 25 },
+            { name: "Chorizo", price: 25 },
+            { name: "Huevo extra", price: 20 },
+            { name: "Aguacate", price: 25 },
+            { name: "Refresco", price: 35 },
+            { name: "Café", price: 30 }
+        ],
         options: [
             "Revueltos",
             "Estrellados",
@@ -314,6 +367,23 @@ const products = [
         // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE HOTCAKES
         image: "assets/img/hero2.webp",
         description: "Tres hotcakes esponjosos con mantequilla, miel y fruta de temporada.",
+
+        ingredients: [
+            { name: "Hotcakes", default: true },
+            { name: "Mantequilla", default: true },
+            { name: "Miel", default: true },
+            { name: "Fruta", default: true }
+        ],
+
+        extras: [
+            { name: "Nutella", price: 25 },
+            { name: "Plátano", price: 18 },
+            { name: "Tocino", price: 25 },
+            { name: "Extra fruta", price: 20 },
+            { name: "Chispas de chocolate", price: 15 },
+            { name: "Helado", price: 20 },
+            { name: "Café", price: 30 }
+        ],
         options: [
             "Sin mantequilla",
             "Miel aparte",
@@ -338,6 +408,23 @@ const products = [
         // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE CROISSANT
         image: "assets/img/hero2.webp",
         description: "Croissant caliente con jamón, queso, huevo y aderezo de la casa.",
+
+        ingredients: [
+            { name: "Croissant", default: true },
+            { name: "Jamón", default: true },
+            { name: "Queso", default: true },
+            { name: "Huevo", default: true },
+            { name: "Aderezo de la casa", default: true }
+        ],
+
+        extras: [
+            { name: "Tocino", price: 25 },
+            { name: "Extra queso", price: 20 },
+            { name: "Aguacate", price: 25 },
+            { name: "Huevo extra", price: 20 },
+            { name: "Refresco", price: 35 },
+            { name: "Café", price: 30 }
+        ],
         options: [
             "Sin jamón",
             "Sin huevo",
@@ -363,6 +450,20 @@ const products = [
         // IMAGEN PROVISIONAL: REEMPLAZA POR UNA FOTO REAL DE CAFÉ
         image: "assets/img/hero2.webp",
         description: "Café americano recién preparado para arrancar el motor.",
+
+        ingredients: [
+            { name: "Café americano", default: true },
+            { name: "Azúcar", default: false },
+            { name: "Leche", default: false }
+        ],
+
+        extras: [
+            { name: "Leche", price: 10 },
+            { name: "Shot extra", price: 18 },
+            { name: "Jarabe de vainilla", price: 12 },
+            { name: "Jarabe de caramelo", price: 12 },
+            { name: "Crema batida", price: 12 }
+        ],
         options: [
             "Sin azúcar",
             "Azúcar aparte"
@@ -373,7 +474,6 @@ const products = [
         ]
     },
     /* HAMBURGUESAS */
-
     {
         id: 1,
         name: "Hamburguesa Rocker",
@@ -383,36 +483,55 @@ const products = [
         available: true,
         price: 149,
         badge: "Más vendida",
-
-        
         image: "assets/img/burger1.webp",
-
         description:
             "Carne artesanal, queso cheddar, tocino, cebolla caramelizada y salsa de la casa.",
 
+        ingredients: [
+            { name: "Pan brioche", default: true },
+            { name: "Carne artesanal", default: true },
+            { name: "Queso cheddar", default: true },
+            { name: "Tocino", default: true },
+            { name: "Cebolla caramelizada", default: true },
+            { name: "Pepinillos", default: true },
+            { name: "Lechuga", default: true },
+            { name: "Jitomate", default: true },
+            { name: "Catsup", default: false },
+            { name: "Mostaza", default: false },
+            { name: "Mayonesa", default: false },
+            { name: "Salsa de la casa", default: true }
+        ],
+
+
+        extras: [
+            { name: "Refresco", price: 35 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Extra carne", price: 45 },
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Aguacate", price: 25 },
+            { name: "Jalapeños", price: 12 },
+            { name: "Aros de cebolla", price: 22 }
+        ],
         options: [
-            "Sin cebolla",
-            "Sin pepinillos",
-            "Sin tocino",
-            "Sin salsa"
+            "Salsa de la casa aparte",
+            "Catsup aparte",
+            "Mostaza aparte",
+            "Mayonesa aparte",
+            "Bien cocida"
         ],
 
         extras: [
-            {
-                name: "Extra carne",
-                price: 45
-            },
-            {
-                name: "Extra queso",
-                price: 20
-            },
-            {
-                name: "Extra tocino",
-                price: 25
-            }
+            { name: "Refresco", price: 35 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Extra carne", price: 45 },
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Aguacate", price: 25 },
+            { name: "Jalapeños", price: 12 },
+            { name: "Aros de cebolla", price: 22 }
         ]
     },
-
     {
         id: 2,
         name: "Hamburguesa Inferno",
@@ -422,36 +541,55 @@ const products = [
         available: true,
         price: 159,
         badge: "Picante",
-
-        
         image: "assets/img/burger2.webp",
-
         description:
             "Carne, queso pepper jack, jalapeño, cebolla crispy y salsa inferno.",
 
+        ingredients: [
+            { name: "Pan brioche", default: true },
+            { name: "Carne artesanal", default: true },
+            { name: "Queso pepper jack", default: true },
+            { name: "Jalapeño", default: true },
+            { name: "Cebolla crispy", default: true },
+            { name: "Pepinillos", default: true },
+            { name: "Lechuga", default: true },
+            { name: "Jitomate", default: true },
+            { name: "Catsup", default: false },
+            { name: "Mostaza", default: false },
+            { name: "Mayonesa", default: false },
+            { name: "Salsa inferno", default: true }
+        ],
+
+
+        extras: [
+            { name: "Refresco", price: 35 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Extra carne", price: 45 },
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Aguacate", price: 25 },
+            { name: "Extra jalapeño", price: 12 },
+            { name: "Aros de cebolla", price: 22 }
+        ],
         options: [
-            "Sin cebolla crispy",
-            "Sin jalapeño",
-            "Sin salsa inferno",
-            "Salsa aparte"
+            "Salsa inferno aparte",
+            "Poca salsa inferno",
+            "Catsup aparte",
+            "Mostaza aparte",
+            "Bien cocida"
         ],
 
         extras: [
-            {
-                name: "Extra carne",
-                price: 45
-            },
-            {
-                name: "Extra queso",
-                price: 20
-            },
-            {
-                name: "Extra jalapeño",
-                price: 12
-            }
+            { name: "Refresco", price: 35 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Extra carne", price: 45 },
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Aguacate", price: 25 },
+            { name: "Extra jalapeño", price: 12 },
+            { name: "Aros de cebolla", price: 22 }
         ]
     },
-
     {
         id: 3,
         name: "Hamburguesa Garage",
@@ -461,33 +599,53 @@ const products = [
         available: true,
         price: 179,
         badge: "Doble carne",
-
-        
         image: "assets/img/burger3.webp",
-
         description:
             "Doble carne, doble queso, tocino, aros de cebolla y aderezo ahumado.",
 
+        ingredients: [
+            { name: "Pan brioche", default: true },
+            { name: "Carne doble", default: true },
+            { name: "Queso doble", default: true },
+            { name: "Tocino", default: true },
+            { name: "Aros de cebolla", default: true },
+            { name: "Pepinillos", default: true },
+            { name: "Lechuga", default: true },
+            { name: "Jitomate", default: true },
+            { name: "Catsup", default: false },
+            { name: "Mostaza", default: false },
+            { name: "Mayonesa", default: false },
+            { name: "Aderezo ahumado", default: true }
+        ],
+
+
+        extras: [
+            { name: "Refresco", price: 35 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Extra carne", price: 45 },
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Aguacate", price: 25 },
+            { name: "Jalapeños", price: 12 },
+            { name: "Extra aros de cebolla", price: 22 }
+        ],
         options: [
-            "Sin tocino",
-            "Sin aros de cebolla",
-            "Sin aderezo",
-            "Aderezo aparte"
+            "Aderezo ahumado aparte",
+            "Catsup aparte",
+            "Mostaza aparte",
+            "Mayonesa aparte",
+            "Bien cocida"
         ],
 
         extras: [
-            {
-                name: "Extra carne",
-                price: 45
-            },
-            {
-                name: "Extra queso",
-                price: 20
-            },
-            {
-                name: "Extra aros de cebolla",
-                price: 22
-            }
+            { name: "Refresco", price: 35 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Extra carne", price: 45 },
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Aguacate", price: 25 },
+            { name: "Jalapeños", price: 12 },
+            { name: "Extra aros de cebolla", price: 22 }
         ]
     },
 
@@ -510,6 +668,23 @@ const products = [
         description:
             "Ocho alitas crujientes bañadas en salsa BBQ ahumada.",
 
+
+        ingredients: [
+            { name: "Alitas", default: true },
+            { name: "Salsa BBQ", default: true },
+            { name: "Apio", default: true },
+            { name: "Zanahoria", default: true },
+            { name: "Ranch", default: true }
+        ],
+
+        extras: [
+            { name: "Extra ranch", price: 18 },
+            { name: "Extra salsa BBQ", price: 15 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Refresco", price: 35 },
+            { name: "Extra queso para papas", price: 20 },
+            { name: "Porción extra de alitas", price: 65 }
+        ],
         options: [
             "Salsa aparte",
             "Sin apio",
@@ -548,6 +723,23 @@ const products = [
         description:
             "Ocho alitas con salsa picante de chiles tostados y mantequilla.",
 
+
+        ingredients: [
+            { name: "Alitas", default: true },
+            { name: "Salsa inferno", default: true },
+            { name: "Apio", default: true },
+            { name: "Zanahoria", default: true },
+            { name: "Ranch", default: true }
+        ],
+
+        extras: [
+            { name: "Extra ranch", price: 18 },
+            { name: "Extra salsa inferno", price: 15 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Refresco", price: 35 },
+            { name: "Extra queso para papas", price: 20 },
+            { name: "Porción extra de alitas", price: 65 }
+        ],
         options: [
             "Salsa aparte",
             "Mitad salsa inferno",
@@ -589,6 +781,23 @@ const products = [
         description:
             "Piezas de pollo empanizadas con salsa BBQ y aderezo ranch.",
 
+
+        ingredients: [
+            { name: "Boneless", default: true },
+            { name: "Salsa BBQ", default: true },
+            { name: "Ranch", default: true },
+            { name: "Apio", default: true },
+            { name: "Zanahoria", default: true }
+        ],
+
+        extras: [
+            { name: "Extra ranch", price: 18 },
+            { name: "Extra salsa BBQ", price: 15 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Refresco", price: 35 },
+            { name: "Extra queso para papas", price: 20 },
+            { name: "Porción extra de boneless", price: 60 }
+        ],
         options: [
             "Salsa aparte",
             "Sin ranch",
@@ -627,6 +836,23 @@ const products = [
         description:
             "Pollo crujiente cubierto con salsa buffalo de intensidad media.",
 
+
+        ingredients: [
+            { name: "Boneless", default: true },
+            { name: "Salsa buffalo", default: true },
+            { name: "Ranch", default: true },
+            { name: "Apio", default: true },
+            { name: "Zanahoria", default: true }
+        ],
+
+        extras: [
+            { name: "Extra ranch", price: 18 },
+            { name: "Extra buffalo", price: 15 },
+            { name: "Papas a la francesa", price: 35 },
+            { name: "Refresco", price: 35 },
+            { name: "Extra queso para papas", price: 20 },
+            { name: "Porción extra de boneless", price: 60 }
+        ],
         options: [
             "Salsa aparte",
             "Poca salsa",
@@ -668,6 +894,22 @@ const products = [
         description:
             "Papas a la francesa sazonadas con sal de ajo y especias.",
 
+
+        ingredients: [
+            { name: "Papas", default: true },
+            { name: "Sal de ajo", default: true },
+            { name: "Especias", default: true },
+            { name: "Catsup", default: true }
+        ],
+
+        extras: [
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Extra aderezo", price: 18 },
+            { name: "Jalapeños", price: 12 },
+            { name: "Carne", price: 45 },
+            { name: "Refresco", price: 35 }
+        ],
         options: [
             "Sin sal de ajo",
             "Sin especias",
@@ -706,6 +948,23 @@ const products = [
         description:
             "Papas con queso cheddar, tocino, jalapeño y aderezo especial.",
 
+
+        ingredients: [
+            { name: "Papas", default: true },
+            { name: "Queso cheddar", default: true },
+            { name: "Tocino", default: true },
+            { name: "Jalapeño", default: true },
+            { name: "Aderezo especial", default: true }
+        ],
+
+        extras: [
+            { name: "Extra queso", price: 20 },
+            { name: "Extra tocino", price: 25 },
+            { name: "Extra jalapeño", price: 12 },
+            { name: "Carne", price: 45 },
+            { name: "Ranch", price: 18 },
+            { name: "Refresco", price: 35 }
+        ],
         options: [
             "Sin jalapeño",
             "Sin tocino",
@@ -748,6 +1007,22 @@ const products = [
         description:
             "Helado de chocolate, leche, crema batida y jarabe de chocolate.",
 
+
+        ingredients: [
+            { name: "Helado de chocolate", default: true },
+            { name: "Leche", default: true },
+            { name: "Crema batida", default: true },
+            { name: "Jarabe de chocolate", default: true }
+        ],
+
+        extras: [
+            { name: "Extra chocolate", price: 15 },
+            { name: "Extra crema batida", price: 12 },
+            { name: "Galleta", price: 18 },
+            { name: "Shot de café", price: 18 },
+            { name: "Plátano", price: 18 },
+            { name: "Helado extra", price: 20 }
+        ],
         options: [
             "Sin crema batida",
             "Sin jarabe",
@@ -786,6 +1061,22 @@ const products = [
         description:
             "Helado de vainilla, leche, crema batida y esencia de vainilla.",
 
+
+        ingredients: [
+            { name: "Helado de vainilla", default: true },
+            { name: "Leche", default: true },
+            { name: "Crema batida", default: true },
+            { name: "Vainilla", default: true }
+        ],
+
+        extras: [
+            { name: "Extra vainilla", price: 15 },
+            { name: "Extra crema batida", price: 12 },
+            { name: "Galleta", price: 18 },
+            { name: "Shot de café", price: 18 },
+            { name: "Plátano", price: 18 },
+            { name: "Helado extra", price: 20 }
+        ],
         options: [
             "Sin crema batida",
             "Poca azúcar",
@@ -827,6 +1118,20 @@ const products = [
         description:
             "Cerveza fría servida en botella o vaso según disponibilidad.",
 
+
+        ingredients: [
+            { name: "Cerveza", default: true },
+            { name: "Vaso", default: false },
+            { name: "Hielo", default: false }
+        ],
+
+        extras: [
+            { name: "Vaso", price: 0 },
+            { name: "Hielo", price: 0 },
+            { name: "Limón", price: 8 },
+            { name: "Michelada", price: 20 },
+            { name: "Clamato", price: 20 }
+        ],
         options: [
             "Con vaso",
             "Sin vaso"
@@ -851,6 +1156,21 @@ const products = [
         description:
             "Limón natural, agua mineral, hielo y un toque de jarabe.",
 
+
+        ingredients: [
+            { name: "Limón", default: true },
+            { name: "Agua mineral", default: true },
+            { name: "Hielo", default: true },
+            { name: "Jarabe", default: true }
+        ],
+
+        extras: [
+            { name: "Extra limón", price: 8 },
+            { name: "Extra jarabe", price: 8 },
+            { name: "Hierbabuena", price: 10 },
+            { name: "Frutos rojos", price: 18 },
+            { name: "Tamaño grande", price: 20 }
+        ],
         options: [
             "Sin azúcar",
             "Poca azúcar",
@@ -888,6 +1208,20 @@ const products = [
         description:
             "Brownie tibio de chocolate con helado de vainilla y jarabe.",
 
+
+        ingredients: [
+            { name: "Brownie", default: true },
+            { name: "Helado de vainilla", default: true },
+            { name: "Jarabe de chocolate", default: true }
+        ],
+
+        extras: [
+            { name: "Extra helado", price: 20 },
+            { name: "Extra chocolate", price: 15 },
+            { name: "Nuez", price: 18 },
+            { name: "Fresas", price: 20 },
+            { name: "Crema batida", price: 12 }
+        ],
         options: [
             "Sin helado",
             "Sin jarabe",
@@ -922,6 +1256,20 @@ const products = [
         description:
             "Rebanada de cheesecake con base crujiente y salsa de frutos rojos.",
 
+
+        ingredients: [
+            { name: "Cheesecake", default: true },
+            { name: "Base crujiente", default: true },
+            { name: "Salsa de frutos rojos", default: true }
+        ],
+
+        extras: [
+            { name: "Extra frutos rojos", price: 18 },
+            { name: "Extra salsa", price: 12 },
+            { name: "Fresas", price: 20 },
+            { name: "Crema batida", price: 12 },
+            { name: "Helado", price: 20 }
+        ],
         options: [
             "Sin salsa",
             "Salsa aparte"
@@ -967,6 +1315,13 @@ const modalProductPrice =
 
 const regularOptions =
     document.querySelector("#regularOptions");
+
+
+const productBuilderGroup =
+    document.querySelector("#productBuilderGroup");
+
+const productIngredientOptions =
+    document.querySelector("#productIngredientOptions");
 
 const extraOptions =
     document.querySelector("#extraOptions");
@@ -1599,6 +1954,11 @@ function openProductModal(product, cartItem = null) {
     productNotes.value =
         cartItem?.notes || "";
 
+    renderProductIngredients(
+        product,
+        cartItem
+    );
+
     renderRegularOptions(product.options);
 
     renderExtraOptions(product.extras);
@@ -1673,6 +2033,138 @@ function closeProductModal() {
 
 
 /* OPCIONES DE PERSONALIZACIÓN */
+
+function renderProductIngredients(product, cartItem = null) {
+    if (!productBuilderGroup || !productIngredientOptions) {
+        return;
+    }
+
+    const ingredients = product.ingredients || [];
+
+    if (!ingredients.length) {
+        productBuilderGroup.hidden = true;
+        productIngredientOptions.innerHTML = "";
+        return;
+    }
+
+    productBuilderGroup.hidden = false;
+    productIngredientOptions.innerHTML = "";
+
+    const savedSelections =
+        Array.isArray(cartItem?.ingredientSelections)
+            ? new Set(cartItem.ingredientSelections)
+            : null;
+
+    ingredients.forEach((ingredient, index) => {
+        const isChecked =
+            savedSelections
+                ? savedSelections.has(ingredient.name)
+                : ingredient.default;
+
+        const label =
+            document.createElement("label");
+
+        label.className = "ingredient-option";
+
+        label.innerHTML = `
+            <input
+                type="checkbox"
+                name="productIngredient"
+                value="${ingredient.name}"
+                data-default="${ingredient.default}"
+                id="product-ingredient-${index}"
+                ${isChecked ? "checked" : ""}
+            >
+
+            <span
+                class="ingredient-option__switch"
+                aria-hidden="true"
+            ></span>
+
+            <span class="ingredient-option__name">
+                ${ingredient.name}
+            </span>
+
+            <small class="ingredient-option__status">
+                ${isChecked ? "Incluido" : "Sin agregar"}
+            </small>
+        `;
+
+        productIngredientOptions.append(label);
+    });
+
+    updateIngredientOptionStates();
+}
+
+
+function updateIngredientOptionStates() {
+    if (!productIngredientOptions) {
+        return;
+    }
+
+    productIngredientOptions
+        .querySelectorAll(
+            'input[name="productIngredient"]'
+        )
+        .forEach((input) => {
+            const label =
+                input.closest(".ingredient-option");
+
+            const status =
+                label?.querySelector(
+                    ".ingredient-option__status"
+                );
+
+            label?.classList.toggle(
+                "is-selected",
+                input.checked
+            );
+
+            if (status) {
+                status.textContent =
+                    input.checked
+                        ? "Incluido"
+                        : "Sin agregar";
+            }
+        });
+}
+
+
+function getSelectedProductIngredients() {
+    return Array.from(
+        document.querySelectorAll(
+            'input[name="productIngredient"]:checked'
+        )
+    ).map((input) => input.value);
+}
+
+
+function getProductIngredientChanges() {
+    if (!currentProduct?.ingredients?.length) {
+        return [];
+    }
+
+    const selected =
+        new Set(getSelectedProductIngredients());
+
+    return currentProduct.ingredients
+        .map((ingredient) => {
+            const isSelected =
+                selected.has(ingredient.name);
+
+            if (ingredient.default && !isSelected) {
+                return `Sin ${ingredient.name}`;
+            }
+
+            if (!ingredient.default && isSelected) {
+                return `Con ${ingredient.name}`;
+            }
+
+            return null;
+        })
+        .filter(Boolean);
+}
+
 
 function renderRegularOptions(options) {
     regularOptions.innerHTML = "";
@@ -1753,7 +2245,17 @@ function renderExtraOptions(extras) {
 
 productOptionsForm.addEventListener(
     "change",
-    updateModalTotal
+    (event) => {
+        if (
+            event.target.matches(
+                'input[name="productIngredient"]'
+            )
+        ) {
+            updateIngredientOptionStates();
+        }
+
+        updateModalTotal();
+    }
 );
 
 
@@ -1847,6 +2349,12 @@ productOptionsForm.addEventListener(
         const selectedExtras =
             getSelectedExtras();
 
+        const ingredientSelections =
+            getSelectedProductIngredients();
+
+        const ingredientChanges =
+            getProductIngredientChanges();
+
         const unitPrice =
             calculateCurrentUnitPrice();
 
@@ -1873,6 +2381,9 @@ productOptionsForm.addEventListener(
 
             extras:
                 selectedExtras,
+
+            ingredientSelections,
+            ingredientChanges,
 
             notes:
                 productNotes.value.trim()
@@ -2099,8 +2610,9 @@ function createCartItem(item) {
 
 function buildItemSpecifications(item) {
     const specifications = [
-        ...item.options,
-        ...item.extras.map(
+        ...(item.ingredientChanges || []),
+        ...(item.options || []),
+        ...(item.extras || []).map(
             (extra) => extra.name
         )
     ];

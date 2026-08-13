@@ -135,7 +135,7 @@
                 </p>
 
                 <h1>
-                    Comida con
+                      Comida con
                     <span>actitud.</span>
                 </h1>
 
@@ -636,6 +636,27 @@
 
                 <form id="productOptionsForm">
 
+                    <fieldset
+                        class="options-group product-builder"
+                        id="productBuilderGroup"
+                        hidden
+                    >
+                        <legend>
+                            Personaliza tu producto
+                        </legend>
+
+                        <p class="options-group__help">
+                            Activa o desactiva ingredientes y componentes. Los cambios sin costo
+                            se reflejan automáticamente en tu pedido.
+                        </p>
+
+                        <div
+                            class="ingredient-options-list"
+                            id="productIngredientOptions"
+                        ></div>
+                    </fieldset>
+
+
                     <fieldset class="options-group">
 
                         <legend>
@@ -653,7 +674,7 @@
                     <fieldset class="options-group">
 
                         <legend>
-                            Extras
+                            Extras y complementos
                         </legend>
 
                         <div

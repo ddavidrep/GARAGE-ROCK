@@ -3258,3 +3258,174 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ========================================
+   PERSONALIZACIÓN PRO DE HAMBURGUESAS
+======================================== */
+
+.options-group__help {
+    margin: -4px 0 13px;
+    color: var(--color-gray);
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+.product-builder[hidden] {
+    display: none !important;
+}
+
+.ingredient-options-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.ingredient-option {
+    position: relative;
+    min-width: 0;
+    min-height: 58px;
+    padding: 10px 12px;
+
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+        "switch name"
+        "switch status";
+    column-gap: 10px;
+    align-items: center;
+
+    border: 1px solid var(--border-dark);
+    border-radius: 13px;
+    background-color: rgba(7, 7, 7, 0.58);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.22s ease,
+        background-color 0.22s ease,
+        transform 0.22s ease;
+}
+
+.ingredient-option:hover {
+    border-color: var(--border-yellow);
+    transform: translateY(-1px);
+}
+
+.ingredient-option.is-selected {
+    border-color: rgba(245, 196, 0, 0.55);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245, 196, 0, 0.10),
+            rgba(245, 196, 0, 0.025)
+        ),
+        rgba(7, 7, 7, 0.72);
+}
+
+.ingredient-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ingredient-option__switch {
+    grid-area: switch;
+    position: relative;
+
+    width: 38px;
+    height: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background-color: #242424;
+
+    transition:
+        background-color 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.ingredient-option__switch::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+    background-color: #8d8d8d;
+
+    transition:
+        transform 0.22s ease,
+        background-color 0.22s ease;
+}
+
+.ingredient-option.is-selected
+.ingredient-option__switch {
+    border-color: var(--color-yellow);
+    background-color: var(--color-yellow);
+}
+
+.ingredient-option.is-selected
+.ingredient-option__switch::after {
+    transform: translateX(16px);
+    background-color: var(--color-black);
+}
+
+.ingredient-option__name {
+    grid-area: name;
+    min-width: 0;
+
+    color: var(--color-white);
+
+    font-size: 0.8rem;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.ingredient-option__status {
+    grid-area: status;
+
+    color: #858585;
+
+    font-size: 0.64rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.ingredient-option.is-selected
+.ingredient-option__status {
+    color: var(--color-yellow);
+}
+
+#extraOptions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#extraOptions .option-label {
+    min-width: 0;
+}
+
+@media (max-width: 720px) {
+    .ingredient-options-list,
+    #extraOptions {
+        grid-template-columns: 1fr;
+    }
+
+    .ingredient-option {
+        min-height: 54px;
+        padding: 9px 11px;
+    }
+
+    .ingredient-option__name {
+        font-size: 0.78rem;
+    }
+
+    .ingredient-option__status {
+        font-size: 0.62rem;
+    }
+}
