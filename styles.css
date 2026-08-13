@@ -3045,3 +3045,216 @@ a {
         font-size: 0.59rem;
     }
 }
+
+
+/* ========================================
+   HORARIO DINÁMICO DEL RESTAURANTE
+======================================== */
+
+.restaurant-hours-card {
+    margin: -6px 0 28px;
+    padding: 18px 20px;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(280px, 0.8fr);
+    gap: 18px;
+    align-items: center;
+
+    border: 1px solid var(--border-dark);
+    border-left: 4px solid var(--color-yellow);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245, 196, 0, 0.08),
+            rgba(255, 255, 255, 0.015)
+        ),
+        var(--color-charcoal);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.22);
+}
+
+.restaurant-hours-card__status {
+    min-width: 0;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 13px;
+    align-items: start;
+}
+
+.restaurant-hours-card__dot {
+    width: 12px;
+    height: 12px;
+    margin-top: 5px;
+
+    border-radius: 50%;
+
+    background-color: #777;
+
+    box-shadow:
+        0 0 0 5px rgba(255, 255, 255, 0.04);
+}
+
+.restaurant-hours-card__dot.is-open {
+    background-color: #39d353;
+
+    box-shadow:
+        0 0 0 5px rgba(57, 211, 83, 0.12),
+        0 0 18px rgba(57, 211, 83, 0.45);
+}
+
+.restaurant-hours-card__dot.is-closed {
+    background-color: #ff5f5f;
+
+    box-shadow:
+        0 0 0 5px rgba(255, 95, 95, 0.12),
+        0 0 18px rgba(255, 95, 95, 0.35);
+}
+
+.restaurant-hours-card__eyebrow {
+    margin-bottom: 5px;
+
+    color: var(--color-yellow);
+
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+}
+
+.restaurant-hours-card.is-closed
+.restaurant-hours-card__eyebrow {
+    color: #ff7777;
+}
+
+.restaurant-hours-card__headline {
+    display: block;
+
+    color: var(--color-white);
+
+    font-size: 1.12rem;
+    line-height: 1.2;
+}
+
+.restaurant-hours-card__message {
+    margin-top: 5px;
+
+    color: var(--color-gray);
+
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.restaurant-hours-card__schedule {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.restaurant-hours-card__slot {
+    min-width: 0;
+    min-height: 72px;
+    padding: 12px 13px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border: 1px solid var(--border-dark);
+    border-radius: 14px;
+
+    background-color: rgba(7, 7, 7, 0.55);
+}
+
+.restaurant-hours-card__icon {
+    flex: 0 0 auto;
+
+    font-size: 1.35rem;
+}
+
+.restaurant-hours-card__slot div {
+    min-width: 0;
+}
+
+.restaurant-hours-card__slot small {
+    display: block;
+    margin-bottom: 4px;
+
+    color: var(--color-gray);
+
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+}
+
+.restaurant-hours-card__slot strong {
+    display: block;
+
+    color: var(--color-white);
+
+    font-size: 0.82rem;
+    line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+    .restaurant-hours-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .restaurant-hours-card {
+        margin: -8px 0 22px;
+        padding: 15px;
+
+        gap: 14px;
+
+        border-radius: 16px;
+    }
+
+    .restaurant-hours-card__headline {
+        font-size: 1rem;
+    }
+
+    .restaurant-hours-card__message {
+        font-size: 0.78rem;
+    }
+
+    .restaurant-hours-card__schedule {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .restaurant-hours-card__slot {
+        min-height: 66px;
+        padding: 10px;
+        gap: 8px;
+
+        border-radius: 12px;
+    }
+
+    .restaurant-hours-card__icon {
+        font-size: 1.15rem;
+    }
+
+    .restaurant-hours-card__slot strong {
+        font-size: 0.72rem;
+    }
+
+    .restaurant-hours-card__slot small {
+        font-size: 0.58rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .restaurant-hours-card__schedule {
+        grid-template-columns: 1fr;
+    }
+}

@@ -30,6 +30,197 @@ const MENU_SCHEDULE = {
 };
 
 
+
+/* ESTADO VISUAL DEL RESTAURANTE */
+
+function minutesFromTimeString(timeString) {
+    const [hours, minutes] =
+        timeString.split(":").map(Number);
+
+    return hours * 60 + minutes;
+}
+
+
+function getCurrentMinutes() {
+    const now = new Date();
+
+    return now.getHours() * 60 +
+        now.getMinutes();
+}
+
+
+function formatHourLabel(timeString) {
+    const [hours, minutes] =
+        timeString.split(":").map(Number);
+
+    const date = new Date();
+    date.setHours(hours, minutes, 0, 0);
+
+    return new Intl.DateTimeFormat(
+        "es-MX",
+        {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true
+        }
+    ).format(date);
+}
+
+
+function getRestaurantOpenState() {
+    const currentMinutes =
+        getCurrentMinutes();
+
+    const breakfastStart =
+        minutesFromTimeString(
+            MENU_SCHEDULE.desayuno.start
+        );
+
+    const breakfastEnd =
+        minutesFromTimeString(
+            MENU_SCHEDULE.desayuno.end
+        );
+
+    const foodStart =
+        minutesFromTimeString(
+            MENU_SCHEDULE.comida.start
+        );
+
+    const foodEnd =
+        minutesFromTimeString(
+            MENU_SCHEDULE.comida.end
+        );
+
+    if (
+        currentMinutes >= breakfastStart &&
+        currentMinutes < breakfastEnd
+    ) {
+        return {
+            isOpen: true,
+            period: "desayuno",
+            closesAt:
+                MENU_SCHEDULE.desayuno.end
+        };
+    }
+
+    if (
+        currentMinutes >= foodStart &&
+        currentMinutes < foodEnd
+    ) {
+        return {
+            isOpen: true,
+            period: "comida",
+            closesAt:
+                MENU_SCHEDULE.comida.end
+        };
+    }
+
+    return {
+        isOpen: false,
+        period: null,
+        opensAt:
+            MENU_SCHEDULE.desayuno.start
+    };
+}
+
+
+function updateRestaurantHoursCard() {
+    if (!restaurantHoursCard) {
+        return;
+    }
+
+    const state =
+        getRestaurantOpenState();
+
+    const breakfastStartLabel =
+        formatHourLabel(
+            MENU_SCHEDULE.desayuno.start
+        );
+
+    const breakfastEndLabel =
+        formatHourLabel(
+            MENU_SCHEDULE.desayuno.end
+        );
+
+    const foodStartLabel =
+        formatHourLabel(
+            MENU_SCHEDULE.comida.start
+        );
+
+    const foodEndLabel =
+        formatHourLabel(
+            MENU_SCHEDULE.comida.end
+        );
+
+    if (breakfastHoursText) {
+        breakfastHoursText.textContent =
+            `${breakfastStartLabel} – ${breakfastEndLabel}`;
+    }
+
+    if (foodHoursText) {
+        foodHoursText.textContent =
+            `${foodStartLabel} – ${foodEndLabel}`;
+    }
+
+    restaurantHoursCard.classList.toggle(
+        "is-open",
+        state.isOpen
+    );
+
+    restaurantHoursCard.classList.toggle(
+        "is-closed",
+        !state.isOpen
+    );
+
+    if (restaurantStatusDot) {
+        restaurantStatusDot.classList.toggle(
+            "is-open",
+            state.isOpen
+        );
+
+        restaurantStatusDot.classList.toggle(
+            "is-closed",
+            !state.isOpen
+        );
+    }
+
+    if (state.isOpen) {
+        const activeLabel =
+            state.period === "desayuno"
+                ? "Desayunos disponibles"
+                : "Comida disponible";
+
+        restaurantStatusLabel.textContent =
+            "ABIERTO AHORA";
+
+        restaurantStatusHeadline.textContent =
+            activeLabel;
+
+        restaurantStatusMessage.textContent =
+            `Puedes ordenar hasta las ${
+                formatHourLabel(
+                    state.closesAt
+                )
+            }.`;
+
+        return;
+    }
+
+    restaurantStatusLabel.textContent =
+        "CERRADO AHORA";
+
+    restaurantStatusHeadline.textContent =
+        "Pedidos fuera de horario";
+
+    restaurantStatusMessage.textContent =
+        `Volvemos a recibir pedidos a las ${
+            formatHourLabel(
+                state.opensAt
+            )
+        }.`;
+}
+
+
 /* BASE DE DATOS DEL MENÚ */
 
 const products = [
@@ -854,6 +1045,28 @@ const mealPeriodButtons =
 
 const menuScheduleStatus =
     document.querySelector("#menuScheduleStatus");
+
+
+const restaurantHoursCard =
+    document.querySelector("#restaurantHoursCard");
+
+const restaurantStatusDot =
+    document.querySelector("#restaurantStatusDot");
+
+const restaurantStatusLabel =
+    document.querySelector("#restaurantStatusLabel");
+
+const restaurantStatusHeadline =
+    document.querySelector("#restaurantStatusHeadline");
+
+const restaurantStatusMessage =
+    document.querySelector("#restaurantStatusMessage");
+
+const breakfastHoursText =
+    document.querySelector("#breakfastHoursText");
+
+const foodHoursText =
+    document.querySelector("#foodHoursText");
 
 const floatingCartButton =
     document.querySelector("#floatingCartButton");
@@ -2608,3 +2821,13 @@ window.setInterval(
     },
     60000
 );
+
+/* ACTUALIZACIÓN AUTOMÁTICA DEL ESTADO DEL RESTAURANTE */
+
+updateRestaurantHoursCard();
+
+window.setInterval(
+    updateRestaurantHoursCard,
+    60 * 1000
+);
+

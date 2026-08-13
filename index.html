@@ -211,6 +211,61 @@
                 </header>
 
 
+                <!-- ESTADO Y HORARIOS DEL RESTAURANTE -->
+                <section
+                    class="restaurant-hours-card"
+                    id="restaurantHoursCard"
+                    aria-live="polite"
+                >
+                    <div class="restaurant-hours-card__status">
+                        <span
+                            class="restaurant-hours-card__dot"
+                            id="restaurantStatusDot"
+                            aria-hidden="true"
+                        ></span>
+
+                        <div>
+                            <p
+                                class="restaurant-hours-card__eyebrow"
+                                id="restaurantStatusLabel"
+                            >
+                                Revisando horario...
+                            </p>
+
+                            <strong
+                                class="restaurant-hours-card__headline"
+                                id="restaurantStatusHeadline"
+                            >
+                                Un momento
+                            </strong>
+
+                            <p
+                                class="restaurant-hours-card__message"
+                                id="restaurantStatusMessage"
+                            ></p>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-hours-card__schedule">
+                        <div class="restaurant-hours-card__slot">
+                            <span class="restaurant-hours-card__icon" aria-hidden="true">☀️</span>
+                            <div>
+                                <small>Desayunos</small>
+                                <strong id="breakfastHoursText">08:00 – 13:00</strong>
+                            </div>
+                        </div>
+
+                        <div class="restaurant-hours-card__slot">
+                            <span class="restaurant-hours-card__icon" aria-hidden="true">🍔</span>
+                            <div>
+                                <small>Comida</small>
+                                <strong id="foodHoursText">13:00 – 23:00</strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
                 <!-- CAMBIO DE TURNO DEL MENÚ -->
                 <div class="meal-switcher" id="mealSwitcher" aria-label="Turno del menú">
 
