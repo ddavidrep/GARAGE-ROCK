@@ -792,6 +792,9 @@ const modalQuantityElement =
 const modalButtonTotal =
     document.querySelector("#modalButtonTotal");
 
+const modalSubmitLabel =
+    document.querySelector("#modalSubmitLabel");
+
 const decreaseModalQuantity =
     document.querySelector("#decreaseModalQuantity");
 
@@ -818,6 +821,21 @@ const cartCount =
 
 const sendWhatsAppButton =
     document.querySelector("#sendWhatsAppButton");
+
+const cartSummary =
+    document.querySelector("#cartSummary");
+
+const checkoutToggle =
+    document.querySelector("#checkoutToggle");
+
+const checkoutContent =
+    document.querySelector("#checkoutContent");
+
+const checkoutToggleArrow =
+    document.querySelector("#checkoutToggleArrow");
+
+const checkoutToggleText =
+    document.querySelector("#checkoutToggleText");
 
 const toast =
     document.querySelector("#toast");
@@ -883,6 +901,8 @@ const bankDetails =
 /* ESTADO DE LA APLICACIÓN */
 
 let currentProduct = null;
+
+let editingCartId = null;
 
 let modalQuantity = 1;
 
@@ -1330,8 +1350,8 @@ productsGrid.addEventListener(
 );
 
 
-function openProductModal(product) {
-    if (!isProductOrderable(product)) {
+function openProductModal(product, cartItem = null) {
+    if (!cartItem && !isProductOrderable(product)) {
         showToast(
             getProductAvailabilityLabel(product)
         );
@@ -1339,7 +1359,11 @@ function openProductModal(product) {
     }
 
     currentProduct = product;
-    modalQuantity = 1;
+    editingCartId =
+        cartItem?.cartId || null;
+
+    modalQuantity =
+        cartItem?.quantity || 1;
 
     modalProductImage.src =
         product.image;
@@ -1359,11 +1383,50 @@ function openProductModal(product) {
     modalQuantityElement.textContent =
         modalQuantity;
 
-    productNotes.value = "";
+    productNotes.value =
+        cartItem?.notes || "";
 
     renderRegularOptions(product.options);
 
     renderExtraOptions(product.extras);
+
+    if (cartItem) {
+        const selectedOptions =
+            new Set(cartItem.options || []);
+
+        regularOptions
+            .querySelectorAll(
+                'input[name="regularOption"]'
+            )
+            .forEach((input) => {
+                input.checked =
+                    selectedOptions.has(
+                        input.value
+                    );
+            });
+
+        const selectedExtras =
+            new Set(
+                (cartItem.extras || [])
+                    .map((extra) => extra.name)
+            );
+
+        extraOptions
+            .querySelectorAll(
+                'input[name="extraOption"]'
+            )
+            .forEach((input) => {
+                input.checked =
+                    selectedExtras.has(
+                        input.value
+                    );
+            });
+    }
+
+    modalSubmitLabel.textContent =
+        cartItem
+            ? "Guardar cambios"
+            : "Agregar al carrito";
 
     updateModalTotal();
 
@@ -1389,6 +1452,10 @@ function closeProductModal() {
     document.body.classList.remove("no-scroll");
 
     currentProduct = null;
+    editingCartId = null;
+
+    modalSubmitLabel.textContent =
+        "Agregar al carrito";
 }
 
 
@@ -1546,7 +1613,7 @@ function updateModalTotal() {
 }
 
 
-/* AGREGAR AL CARRITO */
+/* AGREGAR O EDITAR PRODUCTO DEL CARRITO */
 
 productOptionsForm.addEventListener(
     "submit",
@@ -1570,9 +1637,7 @@ productOptionsForm.addEventListener(
         const unitPrice =
             calculateCurrentUnitPrice();
 
-        const cartItem = {
-            cartId: createUniqueId(),
-
+        const cartItemData = {
             productId:
                 currentProduct.id,
 
@@ -1600,10 +1665,41 @@ productOptionsForm.addEventListener(
                 productNotes.value.trim()
         };
 
-        const addedProductName =
+        const productName =
             currentProduct.name;
 
-        cart.push(cartItem);
+        if (editingCartId) {
+            const itemIndex =
+                cart.findIndex(
+                    (item) =>
+                        item.cartId ===
+                        editingCartId
+                );
+
+            if (itemIndex !== -1) {
+                cart[itemIndex] = {
+                    ...cartItemData,
+                    cartId: editingCartId
+                };
+            }
+
+            saveCart();
+            renderCart();
+            animateCartCount();
+
+            closeProductModal();
+
+            showToast(
+                `${productName} actualizado`
+            );
+
+            return;
+        }
+
+        cart.push({
+            ...cartItemData,
+            cartId: createUniqueId()
+        });
 
         saveCart();
         renderCart();
@@ -1613,7 +1709,7 @@ productOptionsForm.addEventListener(
         closeProductModal();
 
         showToast(
-            `${addedProductName} agregado al carrito`
+            `${productName} agregado al carrito`
         );
     }
 );
@@ -1691,7 +1787,6 @@ function createCartItem(item) {
         buildItemSpecifications(item);
 
     article.innerHTML = `
-        <!-- REEMPLAZA ESTA RUTA POR TU IMAGEN LOCAL EN EL ARREGLO products DE script.js -->
         <img
             src="${item.image}"
             alt="${item.name}"
@@ -1700,7 +1795,16 @@ function createCartItem(item) {
 
         <div class="cart-item__content">
 
-            <h3>${item.name}</h3>
+            <div class="cart-item__heading">
+                <h3>${item.name}</h3>
+
+                <span class="cart-item__price">
+                    ${formatCurrency(
+                        item.unitPrice *
+                        item.quantity
+                    )}
+                </span>
+            </div>
 
             ${
                 optionsText
@@ -1722,45 +1826,56 @@ function createCartItem(item) {
                     : ""
             }
 
-            <span class="cart-item__price">
-                ${formatCurrency(
-                    item.unitPrice *
-                    item.quantity
-                )}
-            </span>
-
         </div>
 
-        <div class="cart-item__actions">
+        <div class="cart-item__footer">
 
-            <button
-                type="button"
-                data-cart-action="increase"
-                aria-label="Aumentar cantidad"
+            <div
+                class="cart-item__quantity-controls"
+                aria-label="Cantidad"
             >
-                +
-            </button>
+                <button
+                    type="button"
+                    data-cart-action="decrease"
+                    aria-label="Disminuir cantidad"
+                >
+                    −
+                </button>
 
-            <span class="cart-item__quantity">
-                ${item.quantity}
-            </span>
+                <span class="cart-item__quantity">
+                    ${item.quantity}
+                </span>
 
-            <button
-                type="button"
-                data-cart-action="decrease"
-                aria-label="Disminuir cantidad"
-            >
-                −
-            </button>
+                <button
+                    type="button"
+                    data-cart-action="increase"
+                    aria-label="Aumentar cantidad"
+                >
+                    +
+                </button>
+            </div>
 
-            <button
-                type="button"
-                class="cart-item__remove"
-                data-cart-action="remove"
-                aria-label="Eliminar producto"
-            >
-                ×
-            </button>
+            <div class="cart-item__secondary-actions">
+
+                <button
+                    type="button"
+                    class="cart-item__edit"
+                    data-cart-action="edit"
+                    aria-label="Editar ${item.name}"
+                >
+                    Editar
+                </button>
+
+                <button
+                    type="button"
+                    class="cart-item__remove"
+                    data-cart-action="remove"
+                    aria-label="Eliminar ${item.name}"
+                >
+                    Eliminar
+                </button>
+
+            </div>
 
         </div>
     `;
@@ -1824,6 +1939,27 @@ function updateCartItem(cartId, action) {
         return;
     }
 
+    if (action === "edit") {
+        const product =
+            products.find(
+                (currentProduct) =>
+                    currentProduct.id ===
+                    item.productId
+            );
+
+        if (!product) {
+            showToast(
+                "No fue posible editar este producto"
+            );
+            return;
+        }
+
+        closeCart();
+        openProductModal(product, item);
+
+        return;
+    }
+
     if (action === "increase") {
         item.quantity += 1;
     }
@@ -1855,6 +1991,72 @@ function updateCartItem(cartId, action) {
 }
 
 
+
+/* CHECKOUT PLEGABLE DEL CARRITO */
+
+function setCheckoutCollapsed(collapsed) {
+    if (
+        !cartSummary ||
+        !checkoutToggle ||
+        !checkoutContent
+    ) {
+        return;
+    }
+
+    cartSummary.classList.toggle(
+        "is-collapsed",
+        collapsed
+    );
+
+    checkoutContent.classList.toggle(
+        "is-collapsed",
+        collapsed
+    );
+
+    checkoutToggle.classList.toggle(
+        "is-collapsed",
+        collapsed
+    );
+
+    checkoutToggle.setAttribute(
+        "aria-expanded",
+        String(!collapsed)
+    );
+
+    checkoutToggle.setAttribute(
+        "aria-label",
+        collapsed
+            ? "Mostrar opciones para finalizar pedido"
+            : "Ocultar opciones para revisar el carrito"
+    );
+
+    if (checkoutToggleArrow) {
+        checkoutToggleArrow.textContent =
+            collapsed ? "↑" : "↓";
+    }
+
+    if (checkoutToggleText) {
+        checkoutToggleText.textContent =
+            collapsed
+                ? "Finalizar pedido"
+                : "Ocultar opciones";
+    }
+}
+
+
+checkoutToggle?.addEventListener(
+    "click",
+    () => {
+        const isCollapsed =
+            checkoutContent.classList.contains(
+                "is-collapsed"
+            );
+
+        setCheckoutCollapsed(!isCollapsed);
+    }
+);
+
+
 /* ABRIR Y CERRAR CARRITO */
 
 function openCart() {
@@ -1872,6 +2074,20 @@ function openCart() {
     );
 
     document.body.classList.add("no-scroll");
+
+    /*
+    En móvil priorizamos ver los productos.
+    Si ya hay 2 o más, el checkout abre plegado.
+    En tablet/PC conserva el último estado manual.
+    */
+    if (
+        window.matchMedia(
+            "(max-width: 720px)"
+        ).matches &&
+        cart.length >= 2
+    ) {
+        setCheckoutCollapsed(true);
+    }
 }
 
 

@@ -658,7 +658,7 @@
                         type="submit"
                         class="button button--primary modal__add-button"
                     >
-                        Agregar al carrito
+                        <span id="modalSubmitLabel">Agregar al carrito</span>
 
                         <span id="modalButtonTotal">
                             $0.00
@@ -730,12 +730,44 @@
         </div>
 
 
-        <footer class="cart-summary">
+        <footer class="cart-summary" id="cartSummary">
+
+            <button
+                type="button"
+                class="checkout-toggle"
+                id="checkoutToggle"
+                aria-expanded="true"
+                aria-controls="checkoutContent"
+                aria-label="Ocultar opciones para finalizar pedido"
+            >
+                <span class="checkout-toggle__handle" aria-hidden="true"></span>
+
+                <span class="checkout-toggle__row">
+                    <span
+                        class="checkout-toggle__arrow"
+                        id="checkoutToggleArrow"
+                        aria-hidden="true"
+                    >↓</span>
+
+                    <span
+                        class="checkout-toggle__text"
+                        id="checkoutToggleText"
+                    >Ocultar opciones</span>
+                </span>
+            </button>
+
 
             <div class="cart-summary__row">
                 <span>Total</span>
                 <strong id="cartSubtotal">$0.00</strong>
             </div>
+
+            <div
+                class="checkout-collapsible"
+                id="checkoutContent"
+            >
+                <div class="checkout-collapsible__inner">
+
 
             <!-- TIPO DE ENTREGA -->
             <fieldset class="checkout-block">
@@ -861,6 +893,10 @@
                 Enviar pedido por WhatsApp
                 <span aria-hidden="true">↗</span>
             </button>
+
+        
+                </div>
+            </div>
 
         </footer>
 
